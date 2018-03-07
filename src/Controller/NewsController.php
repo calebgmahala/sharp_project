@@ -98,6 +98,6 @@ class NewsController extends AppController
         $text = $_POST["text"];
         $author = 'user';
         $connection->execute("INSERT INTO articles(title, article, author) VALUES('$title', '$text.', '$author');");
-        index();
+        $this->redirect('/news/');
     }
 }
