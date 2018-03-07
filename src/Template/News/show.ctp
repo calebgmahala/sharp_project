@@ -34,13 +34,18 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     </div>
 </header>
 <div>
-    <?php 
-     	echo '<p>'.$article.'</p>';
-		echo $table['title'];
-		echo '<br>';
-		echo $table['article'];
-		echo '<br>';
-		echo $table['author'];
-
-    ?>
+	<ul>
+	    <?php 
+			echo "<li>".$table['title']."</li>";
+			echo "<li>".$table['article']."</li>";
+			echo "<li>".$table['author']."</li>";
+	    ?>
+	</ul>
+	<ul>
+		<?php
+			echo "<a href='/news/'>Back</a> | ";
+			echo "<a href='/news/edit'>Edit Article</a> | ";
+			echo "<a href='/news/delete'>Destroy Article</a>";
+		?>
+	</ul>
 </div>

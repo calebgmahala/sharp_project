@@ -38,3 +38,6 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 <textarea name="text"></textarea>
 <input type="submit">
 </form>
+<?php
+	echo "<a href='/news/'>Back</a>";
+?>
