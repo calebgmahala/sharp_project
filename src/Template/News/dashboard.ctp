@@ -38,9 +38,15 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	<?php
 		foreach($table as $t) {
 			echo '<li>';
-			echo $t['title'];
+			echo '<a href=/news/show/'.$t['id'].'>'.$t['title'].'</a>';
 			echo '</li>';
 		}
 	?>
 	</ol>
+	<ul>
+		<?php
+			echo "<a href='/news/new'>New Article</a> | ";
+			echo "<a href='/news/delete'>Destroy Article</a>";
+		?>
+	</ul>
 </div>
