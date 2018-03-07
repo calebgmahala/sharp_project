@@ -45,7 +45,10 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 		<?php
 			echo "<a href='/news/'>Back</a> | ";
 			echo "<a href='/news/edit'>Edit Article</a> | ";
-			echo "<a href='/news/delete'>Destroy Article</a>";
+			echo "<form action='/news/delete' method='post'>";
+			echo "<input type=hidden name='delete_article' value='$article'>";
+			echo "<input type='submit' value='Destroy'>";
+			echo "</form>";
 		?>
 	</ul>
 </div>
