@@ -73,6 +73,11 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/news/show/([0-9]+)', ['controller' => 'News', 'action' => 'show']);
 
     $routes->connect('/news/create_article', ['controller' => 'News', 'action' => 'new']);
+
+    $routes->connect('/login/', ['controller' => 'Sessions', 'action' => 'index']);
+    
+    $routes->connect('/create_session/', ['controller' => 'Sessions', 'action' => 'new']);
+
     /**
      * Connect catchall routes for all controllers.
      *

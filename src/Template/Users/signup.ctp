@@ -39,5 +39,5 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 <input type="submit">
 </form>
 <?php
-	echo '<a class="create_nav_link" href="/news/"">Back</a>';
+	echo '<a class="create_nav_link" href="/users/"">Users</a>';
 ?>

@@ -27,7 +27,7 @@ use Cake\Datasource\ConnectionManager;
  *
  * @link https://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
-class UsersController extends AppController
+class SessionsController extends AppController
 {
 
     /**
@@ -39,18 +39,11 @@ class UsersController extends AppController
      * @throws \Cake\Network\Exception\NotFoundException When the view file could not
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
-
     public function index()
     {
-        $connection = ConnectionManager::get('default');
-
-
-
         //$this->set(compact('page', 'subpage'));
-        $results = $connection->execute('SELECT * FROM users;')->fetchAll('assoc');
-        $this->set('users', $results);
         try {
-            $this->render( 'users' );
+            $this->render( 'login' );
         } catch (MissingTemplateException $exception) {
             if (Configure::read('debug')) {
                 throw $exception;
@@ -61,51 +54,31 @@ class UsersController extends AppController
         //return $this->redirect('/'.$path);
     }
 
-    public function create()
+    public function new()
     {
+        $connection = ConnectionManager::get('default');
+        $checkName = $connection->execute("SELECT * FROM users WHERE name = '".$_POST['name']."' ;")->fetch('assoc');
+        var_dump($checkName);
+        var_dump($_POST['password']);
+        var_dump($checkName['password']);
+    	if ($_POST['password'] = $checkName['password']) {
+    		if(!session_id()) {
+    		session_start();
+    	}
+    		$_SESSION['id'] = $checkName['id'];
+    		$_SESSION['username'] = $checkName['name'];
+    		var_dump($_SESSION['id']);
+    		print_r($_SESSION['username']);
+    	}
         try {
-            $this->render( 'signup' );
+            $this->render( 'login' );
         } catch (MissingTemplateException $exception) {
             if (Configure::read('debug')) {
                 throw $exception;
             }
             throw new NotFoundException();
         }
-    }
 
-    public function show($path)
-    {
-        $connection = ConnectionManager::get('default');
-
-        $this->set('user_id', $path);
-        $results = $connection->execute("SELECT * FROM users WHERE id='$path' ;")->fetch('assoc');
-        $this->set('user', $results);
-        try {
-            $this->render( 'show' );
-        } catch (MissingTemplateException $exception) {
-            if (Configure::read('debug')) {
-                throw $exception;
-            }
-            throw new NotFoundException();
-        }
-    }
-
-    public function new() {
-        $connection = ConnectionManager::get('default');
-        //$result = $connection->prepare('CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE NOT NULL, password VARYING CHARACTER(20));');
-         //$result->execute();
-        $name = $_POST["name"];
-        $password = $_POST["password"];
-        $connection->execute("INSERT INTO users('name', 'password') VALUES('$name', '$password');");
-        $id = $connection->execute("SELECT id FROM users WHERE name = '$name' AND password = '$password';")->fetch('assoc');
-        echo $id['id'];
-        $this->redirect("/user/".$id['id']);
-    }
-
-    public function delete() {
-        $connection = ConnectionManager::get('default');
-        $d = $_POST["delete_user"];
-        $connection->execute("DELETE FROM users WHERE id='$d' ;");
-        $this->redirect('/signup/');
+        //return $this->redirect('/'.$path);
     }
 }

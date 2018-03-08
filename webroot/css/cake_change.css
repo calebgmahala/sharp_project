@@ -25,6 +25,7 @@ form input[type=password] {
 	width: 49%;
 }
 .right_column {
+    vertical-align: top;
 	margin-top: 20px;
 	display: inline-block;
 	width: 30%;

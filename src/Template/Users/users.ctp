@@ -38,7 +38,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	<?php
 		foreach($users as $u) {
 			echo '<li>';
-			echo '<a class="body_nav_links" href=/news/show/'.$u['id'].'>'.$u['name'].'</a>';
+			echo '<a class="body_nav_links" href=/user/'.$u['id'].'>'.$u['name'].'</a>';
 			echo '</li>';
 		}
 	?>

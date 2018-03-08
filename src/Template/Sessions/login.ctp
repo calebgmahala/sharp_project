@@ -27,31 +27,17 @@ endif;
 
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
-<head>
-	<?= $this->Html->css('show.css') ?>
-</head>
 
 <header class="row">
     <div class="header-title">
-        <h1>Users</h1>
+        <h1>Login!</h1>
     </div>
 </header>
-<div>
-	<ul>
-	    <?php 
-			echo "<li><h6>Username:</h6><p>".$user['name']."</p></li>";
-			echo "<li><h6>Password:</h6><p>".$user['password']."</p></li>";
-			echo "<li><h6>ID:</h6><p>".$user['id']."</p></li>";
-	    ?>
-	</ul>
-	<ul>
-		<?php
-			//echo "<a href='/news/'>Back</a> | ";
-			echo "<a href='/users/edit'>Edit User</a> | ";
-			echo "<form action='/delete/user' method='post'>";
-			echo "<input type=hidden name='delete_user' value='$user_id'>";
-			echo "<input type='submit' value='Destroy'>";
-			echo "</form>";
-		?>
-	</ul>
-</div>
+<form action="/create_session/" method="post">
+<input type="text" name="name">
+<input type="password" name="password">
+<input type="submit">
+</form>
+<?php
+	echo '<a class="create_nav_link" href="/signup">Signup!</a>';
+?>
