@@ -91,13 +91,19 @@ class NewsController extends AppController
 
     public function new() {
         $connection = ConnectionManager::get('default');
-        //$result = $connection->prepare('CREATE TABLE articles (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, article TEXT NOT NULL, author TEXT NOT NULL);');
-        //$result->bind_param('i', $_GET['delpost']);
-        //$result->execute();
+        // $result = $connection->prepare('CREATE TABLE articles (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, article TEXT NOT NULL, author TEXT NOT NULL);');
+        // $result->execute();
         $title = $_POST["title"];
         $text = $_POST["text"];
         $author = 'user';
-        $connection->execute("INSERT INTO articles(title, article, author) VALUES('$title', '$text.', '$author');");
+        $connection->execute("INSERT INTO articles('title', 'article', 'author') VALUES('$title', '$text.', '$author');");
+        $this->redirect('/news/');
+    }
+
+    public function delete() {
+        $connection = ConnectionManager::get('default');
+        $d = $_POST["delete_article"];
+        $connection->execute("DELETE FROM articles WHERE id='$d' ;");
         $this->redirect('/news/');
     }
 }
