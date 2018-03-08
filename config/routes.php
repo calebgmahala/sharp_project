@@ -49,7 +49,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'News', 'action' => 'index']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -64,9 +64,9 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/makeuser/', ['controller' => 'Users', 'action' => 'new']);
 
-    $routes->connect('/news/?', ['controller' => 'News', 'action' => 'index']);
-
     $routes->connect('/delete/user', ['controller' => 'Users', 'action' => 'delete']);
+
+    $routes->connect('/news/?', ['controller' => 'News', 'action' => 'index']);
 
     $routes->connect('/news/new', ['controller' => 'News', 'action' => 'create']);
 
@@ -75,8 +75,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/news/create_article', ['controller' => 'News', 'action' => 'new']);
 
     $routes->connect('/login/', ['controller' => 'Sessions', 'action' => 'index']);
-    
+
     $routes->connect('/create_session/', ['controller' => 'Sessions', 'action' => 'new']);
+
+    $routes->connect('/logout/', ['controller' => 'Sessions', 'action' => 'delete']);
 
     /**
      * Connect catchall routes for all controllers.

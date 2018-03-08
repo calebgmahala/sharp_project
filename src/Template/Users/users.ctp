@@ -45,7 +45,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	</ol>
 	<ul class="right_column">
 		<?php
-			echo '<a class="" href="/signup">Signup!</a>';
+			echo '<a class="" href="/signup/">Signup!</a> | ';
+			echo '<a class="" href="/logout/">Logout!</a>';
 		?>
 	</ul>
 </div>

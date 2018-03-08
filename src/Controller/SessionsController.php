@@ -62,22 +62,54 @@ class SessionsController extends AppController
         var_dump($_POST['password']);
         var_dump($checkName['password']);
     	if ($_POST['password'] = $checkName['password']) {
-    		if(!session_id()) {
-    		session_start();
-    	}
+    		
     		$_SESSION['id'] = $checkName['id'];
     		$_SESSION['username'] = $checkName['name'];
     		var_dump($_SESSION['id']);
     		print_r($_SESSION['username']);
     	}
         try {
-            $this->render( 'login' );
+            $this->redirect( "user/".$_SESSION['id'] );
         } catch (MissingTemplateException $exception) {
             if (Configure::read('debug')) {
                 throw $exception;
             }
             throw new NotFoundException();
         }
+
+        //return $this->redirect('/'.$path);
+    }
+    public function delete()
+    {
+    	// if (session_status() != PHP_SESSION_NONE) {
+    	// 	$_SESSION = array();
+    		
+    	// 	echo 'session up';
+    		
+    	// 	var_dump($_SESSION);
+    	// 	var_dump($_SESSION['username']);
+    		
+    		if (ini_get("session.use_cookies")) {
+    			$params = session_get_cookie_params();
+    			setcookie(session_name(), '', time() - 42000,
+        			$params["path"], $params["domain"],
+        			$params["secure"], $params["httponly"]
+    		);
+    		}
+    		session_destroy();
+    		session_start();
+		// } else {
+		// 	var_dump('session not up');
+		// }
+  //       try {
+  //       	$this->render( 'login' );
+            $this->redirect( '/login/' );
+  //       } catch (MissingTemplateException $exception) {
+  //           if (Configure::read('debug')) {
+  //               throw $exception;
+  //           }
+  //           throw new NotFoundException();
+  //       }
 
         //return $this->redirect('/'.$path);
     }

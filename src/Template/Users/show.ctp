@@ -46,7 +46,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	</ul>
 	<ul>
 		<?php
-			//echo "<a href='/news/'>Back</a> | ";
+			echo "<a href='/users/'>Users</a> | ";
 			echo "<a href='/users/edit'>Edit User</a> | ";
 			echo "<form action='/delete/user' method='post'>";
 			echo "<input type=hidden name='delete_user' value='$user_id'>";

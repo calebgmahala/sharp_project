@@ -15,6 +15,10 @@
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  */
 
+if(!session_id()) {
+	session_start();
+}
+
 // Check platform requirements
 require dirname(__DIR__) . '/config/requirements.php';
 

@@ -63,7 +63,7 @@ class NewsController extends AppController
     public function create()
     {
         try {
-            $this->render( 'create' );
+            $this->render( 'form' );
         } catch (MissingTemplateException $exception) {
             if (Configure::read('debug')) {
                 throw $exception;
@@ -95,7 +95,11 @@ class NewsController extends AppController
         // $result->execute();
         $title = $_POST["title"];
         $text = $_POST["text"];
-        $author = 'user';
+        if (!empty($_SESSION)) {
+            $author = $_SESSION['username'];
+        } else {
+            $author = 'Unknown';
+        }
         $connection->execute("INSERT INTO articles('title', 'article', 'author') VALUES('$title', '$text.', '$author');");
         $this->redirect('/news/');
     }
@@ -105,5 +109,8 @@ class NewsController extends AppController
         $d = $_POST["delete_article"];
         $connection->execute("DELETE FROM articles WHERE id='$d' ;");
         $this->redirect('/news/');
+    }
+    public function edit () {
+        
     }
 }
