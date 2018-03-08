@@ -1,0 +1,31 @@
+form textarea{
+    margin-left: 5%;
+    height: 100px;
+    width: 90%
+}
+form input {
+    margin-left: 5%;
+}
+form input[type=text] {
+    width: 200px;
+    margin-left: 5%;
+    margin-top: 40px;
+}
+form input[type=password] {
+    width: 200px;
+    margin-left: 5%;
+    margin-top: 40px;
+}
+.create_nav_link {
+	margin-left: 5%;
+}
+.left_column {
+	margin-top: 20px;
+	display: inline-block;
+	width: 49%;
+}
+.right_column {
+	margin-top: 20px;
+	display: inline-block;
+	width: 30%;
+}

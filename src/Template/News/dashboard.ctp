@@ -34,19 +34,18 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     </div>
 </header>
 <div>
-	<ol>
+	<ol class="left_column">
 	<?php
 		foreach($table as $t) {
 			echo '<li>';
-			echo '<a href=/news/show/'.$t['id'].'>'.$t['title'].'</a>';
+			echo '<a class="body_nav_links" href=/news/show/'.$t['id'].'>'.$t['title'].'</a>';
 			echo '</li>';
 		}
 	?>
 	</ol>
-	<ul>
+	<ul class="right_column">
 		<?php
-			echo "<a href='/news/new'>New Article</a> | ";
-			echo "<a href='/news/delete'>Destroy Article</a>";
+			echo '<a class="" href="/news/new">New Article</a>';
 		?>
 	</ul>
 </div>

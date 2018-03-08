@@ -33,23 +33,23 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 
 <header class="row">
     <div class="header-title">
-        <h1>Here is one news article</h1>
+        <h1>Users</h1>
     </div>
 </header>
 <div>
 	<ul>
 	    <?php 
-			echo "<li><h6>Title:</h6><p>".$table['title']."</p></li>";
-			echo "<li><h6>Article:</h6><p>".$table['article']."</p></li>";
-			echo "<li><h6>Author:</h6><p>".$table['author']."</p></li>";
+			echo "<li><h6>Username:</h6><p>".$user['name']."</p></li>";
+			echo "<li><h6>Password:</h6><p>".$user['password']."</p></li>";
+			echo "<li><h6>ID:</h6><p>".$user['id']."</p></li>";
 	    ?>
 	</ul>
 	<ul>
 		<?php
-			echo "<a href='/news/'>Back</a> | ";
-			echo "<a href='/news/edit'>Edit Article</a> | ";
-			echo "<form action='/news/delete' method='post'>";
-			echo "<input type=hidden name='delete_article' value='$article'>";
+			//echo "<a href='/news/'>Back</a> | ";
+			echo "<a href='/users/edit'>Edit Article</a> | ";
+			echo "<form action='/users/delete' method='post'>";
+			echo "<input type=hidden name='delete_user' value='$user_id'>";
 			echo "<input type='submit' value='Destroy'>";
 			echo "</form>";
 		?>
