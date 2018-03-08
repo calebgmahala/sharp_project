@@ -39,6 +39,28 @@ class UsersController extends AppController
      * @throws \Cake\Network\Exception\NotFoundException When the view file could not
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
+
+     public function index()
+    {
+        $connection = ConnectionManager::get('default');
+
+
+
+        //$this->set(compact('page', 'subpage'));
+        $results = $connection->execute('SELECT * FROM users;')->fetchAll('assoc');
+        $this->set('users', $results);
+        try {
+            $this->render( 'users' );
+        } catch (MissingTemplateException $exception) {
+            if (Configure::read('debug')) {
+                throw $exception;
+            }
+            throw new NotFoundException();
+        }
+
+        //return $this->redirect('/'.$path);
+    }
+
     public function create()
     {
         try {
@@ -75,14 +97,15 @@ class UsersController extends AppController
         $name = $_POST["name"];
         $password = $_POST["password"];
         $connection->execute("INSERT INTO users('name', 'password') VALUES('$name', '$password');");
-        $id = $connection->execute("SELECT id FROM users WHERE name = '$name' AND password = '$password';");
-        $this->redirect("/show/'$id'");
+        $id = $connection->execute("SELECT id FROM users WHERE name = '$name' AND password = '$password';")->fetch('assoc');
+        echo $id['id'];
+        $this->redirect("/users/".$id['id']);
     }
 
     public function delete() {
         $connection = ConnectionManager::get('default');
-        $d = $_POST["delete_article"];
-        $connection->execute("DELETE FROM articles WHERE id='$d' ;");
-        $this->redirect('/news/');
+        $d = $_POST["delete_user"];
+        $connection->execute("DELETE FROM users WHERE id='$d' ;");
+        $this->redirect('/signup/');
     }
 }

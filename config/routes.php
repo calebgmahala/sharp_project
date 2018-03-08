@@ -56,13 +56,17 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
-    $routes->connect('/users/*', ['controller' => 'Users', 'action' => 'show']);
+    $routes->connect('/user/*', ['controller' => 'Users', 'action' => 'show']);
+
+    $routes->connect('/users/?', ['controller' => 'Users', 'action' => 'index']);
 
     $routes->connect('/signup/', ['controller' => 'Users', 'action' => 'create']);
 
     $routes->connect('/makeuser/', ['controller' => 'Users', 'action' => 'new']);
 
     $routes->connect('/news/?', ['controller' => 'News', 'action' => 'index']);
+
+    $routes->connect('/delete/user', ['controller' => 'Users', 'action' => 'delete']);
 
     $routes->connect('/news/new', ['controller' => 'News', 'action' => 'create']);
 

@@ -27,31 +27,25 @@ endif;
 
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
-<head>
-	<?= $this->Html->css('show.css') ?>
-</head>
 
 <header class="row">
     <div class="header-title">
-        <h1>Users</h1>
+        <h1>This is a list of users</h1>
     </div>
 </header>
 <div>
-	<ul>
-	    <?php 
-			echo "<li><h6>Username:</h6><p>".$user['name']."</p></li>";
-			echo "<li><h6>Password:</h6><p>".$user['password']."</p></li>";
-			echo "<li><h6>ID:</h6><p>".$user['id']."</p></li>";
-	    ?>
-	</ul>
-	<ul>
+	<ol class="left_column">
+	<?php
+		foreach($users as $u) {
+			echo '<li>';
+			echo '<a class="body_nav_links" href=/news/show/'.$u['id'].'>'.$u['name'].'</a>';
+			echo '</li>';
+		}
+	?>
+	</ol>
+	<ul class="right_column">
 		<?php
-			//echo "<a href='/news/'>Back</a> | ";
-			echo "<a href='/users/edit'>Edit Article</a> | ";
-			echo "<form action='/delete/user' method='post'>";
-			echo "<input type=hidden name='delete_user' value='$user_id'>";
-			echo "<input type='submit' value='Destroy'>";
-			echo "</form>";
+			echo '<a class="" href="/signup">Signup!</a>';
 		?>
 	</ul>
 </div>
